@@ -1,0 +1,56 @@
+package com.mint.task1.domain.order;
+
+import com.mint.task1.domain.types.OrderStatus;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.math.BigDecimal;
+
+@Setter
+@Getter
+@NoArgsConstructor
+@ToString
+@Entity
+@Table(schema = "task1", name = "purchaseOrder"
+)
+public class OrderEntity implements Serializable {
+
+    @Id
+    @GeneratedValue(
+            strategy = GenerationType.AUTO
+    )
+    @Column(
+            name = "id",
+            updatable = false,
+            nullable = false
+    )
+    private Long id;
+
+    @Column(name ="product_id", nullable = false)
+    private Long productId;
+
+    @Column(name ="customer_id", nullable = false)
+    private Long customerId;
+
+
+    @Column(name ="quantity", nullable = false)
+    private Integer quantity;
+
+
+    @Column(name ="price", nullable = false)
+    private BigDecimal price;
+
+@Column(name ="discount", nullable = false)
+    private BigDecimal discount;
+
+    @Enumerated
+    @Column(name ="status", nullable = false)
+    private OrderStatus status;
+
+
+
+}
