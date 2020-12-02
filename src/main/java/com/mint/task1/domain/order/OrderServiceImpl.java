@@ -17,9 +17,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
+import javax.transaction.Transactional;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class OrderServiceImpl implements OrderService {
 
     private final OrderRepo orderRepo;
@@ -44,6 +46,7 @@ public class OrderServiceImpl implements OrderService {
                 customer = customerService.getCustomerById(orderDTO.getCustomerId());
             } else {
                 customer = customerService.createCustomer(orderDTO.getCustomer());
+                orderDTO.setCustomerId(customer.getId());
             }
             ProductDTO productDTO = productService.getProductById(orderDTO.getProductId());
             productDTO.setQuantity(productDTO.getQuantity() - orderDTO.getQuantity());

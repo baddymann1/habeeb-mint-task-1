@@ -13,6 +13,8 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 public class OrderDTO implements Serializable {
+
+    private  Long id;
     private Long productId;
 
     private Long customerId;
