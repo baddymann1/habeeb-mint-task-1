@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.mint</groupId>
 	<artifactId>task1</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>task1</name>
 	<description>Demo project for Task 1</description>
