@@ -7,6 +7,9 @@ import lombok.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 @Setter
 @Getter
 @Builder
@@ -31,4 +34,7 @@ public class UpdateOrderDTO implements Serializable {
 
     @NotNull(message = "status cannot be null")
     private OrderStatus status;
+
+    private LocalDate orderDate;
+    private LocalTime orderTime;
 }

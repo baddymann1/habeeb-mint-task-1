@@ -9,6 +9,9 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 @Setter
 @Getter
 @Builder
@@ -37,5 +40,7 @@ public class AddOrderDTO implements Serializable {
     @NotNull(message = "status cannot be null")
     private OrderStatus status;
 
+    private LocalDate orderDate;
 
+    private LocalTime orderTime;
 }

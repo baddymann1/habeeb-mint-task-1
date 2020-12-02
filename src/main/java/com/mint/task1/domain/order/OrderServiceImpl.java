@@ -18,6 +18,8 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Service
 @RequiredArgsConstructor
@@ -51,6 +53,8 @@ public class OrderServiceImpl implements OrderService {
             ProductDTO productDTO = productService.getProductById(orderDTO.getProductId());
             productDTO.setQuantity(productDTO.getQuantity() - orderDTO.getQuantity());
             productService.updateProduct(modelMapper.map(productDTO, UpdateProductDTO.class));
+            orderDTO.setOrderDate(LocalDate.now());
+            orderDTO.setOrderTime(LocalTime.now());
             OrderEntity save = orderRepo.save(modelMapper.map(orderDTO, OrderEntity.class));
             dto = modelMapper.map(save, OrderDTO.class);
             dto.setCustomer(customer);

@@ -9,6 +9,8 @@ import lombok.ToString;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Setter
 @Getter
@@ -30,27 +32,30 @@ public class OrderEntity implements Serializable {
     )
     private Long id;
 
-    @Column(name ="product_id", nullable = false)
+    @Column(name = "product_id", nullable = false)
     private Long productId;
 
-    @Column(name ="customer_id", nullable = false)
+    @Column(name = "customer_id", nullable = false)
     private Long customerId;
 
+    @Column(name = "order_date", nullable = false)
+    private LocalDate orderDate;
+    @Column(name = "order_time", nullable = false)
+    private LocalTime orderTime;
 
-    @Column(name ="quantity", nullable = false)
+    @Column(name = "quantity", nullable = false)
     private Integer quantity;
 
 
-    @Column(name ="price", nullable = false)
+    @Column(name = "price", nullable = false)
     private BigDecimal price;
 
-@Column(name ="discount", nullable = false)
+    @Column(name = "discount", nullable = false)
     private BigDecimal discount;
 
     @Enumerated
-    @Column(name ="status", nullable = false)
+    @Column(name = "status", nullable = false)
     private OrderStatus status;
-
 
 
 }

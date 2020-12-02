@@ -6,6 +6,9 @@ import lombok.*;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 @Setter
 @Getter
 @Builder
@@ -31,4 +34,8 @@ public class OrderDTO implements Serializable {
 
 
     private OrderStatus status;
+
+    private LocalDate orderDate;
+
+    private LocalTime orderTime;
 }
