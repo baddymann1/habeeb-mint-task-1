@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 //@RequiredArgsConstructor
-public class KafkaService {
+public class KafkaProducerService {
 
     @Autowired
     private  KafkaTemplate<String, OrderDTO> kafkaTemplate;

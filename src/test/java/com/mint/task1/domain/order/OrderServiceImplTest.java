@@ -1,14 +1,13 @@
 package com.mint.task1.domain.order;
 
 import com.mint.task1.domain.customer.dto.AddCustomerDTO;
-import com.mint.task1.domain.kafka.KafkaService;
+import com.mint.task1.domain.kafka.KafkaProducerService;
 import com.mint.task1.domain.order.dto.AddOrderDTO;
 import com.mint.task1.domain.order.dto.OrderDTO;
 import com.mint.task1.domain.types.OrderStatus;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -30,7 +29,7 @@ class OrderServiceImplTest {
     OrderService orderService;
 
     @MockBean
-    private KafkaService kafkaService;
+    private KafkaProducerService kafkaProducerService;
 
     private  AddOrderDTO orderDTO;
 
@@ -44,7 +43,7 @@ class OrderServiceImplTest {
                 .price(BigDecimal.valueOf(200))
                 .customer(AddCustomerDTO.builder().name("Badmus2").phoneNo("09054242333").build())
                 .build();
-        Mockito.doNothing().when(kafkaService).publishOrder(any());
+        Mockito.doNothing().when(kafkaProducerService).publishOrder(any());
     }
 
     @Test

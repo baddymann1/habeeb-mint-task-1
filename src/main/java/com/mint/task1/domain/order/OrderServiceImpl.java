@@ -2,7 +2,7 @@ package com.mint.task1.domain.order;
 
 import com.mint.task1.domain.customer.CustomerService;
 import com.mint.task1.domain.customer.dto.CustomerDTO;
-import com.mint.task1.domain.kafka.KafkaService;
+import com.mint.task1.domain.kafka.KafkaProducerService;
 import com.mint.task1.domain.order.dto.AddOrderDTO;
 import com.mint.task1.domain.order.dto.OrderDTO;
 import com.mint.task1.domain.order.dto.UpdateOrderDTO;
@@ -30,7 +30,7 @@ public class OrderServiceImpl implements OrderService {
     private final CustomerService customerService;
     private final OrderValidator orderValidator;
     private final ProductService productService;
-    private final KafkaService kafkaService;
+    private final KafkaProducerService kafkaProducerService;
     private final ModelMapper modelMapper = new ModelMapper();
 
     @Bean
@@ -59,7 +59,7 @@ public class OrderServiceImpl implements OrderService {
             dto = modelMapper.map(save, OrderDTO.class);
             dto.setCustomer(customer);
 
-            kafkaService.publishOrder(dto);
+            kafkaProducerService.publishOrder(dto);
         }
         return dto;
     }
